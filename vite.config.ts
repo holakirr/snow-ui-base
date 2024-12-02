@@ -1,9 +1,9 @@
 /// <reference types="vitest" />
 
-import react from '@vitejs/plugin-react';
-import { resolve } from 'node:path';
-import { defineConfig } from 'vite';
-import dts from 'vite-plugin-dts';
+import { resolve } from 'node:path'
+import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite'
+import dts from 'vite-plugin-dts'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -28,12 +28,18 @@ export default defineConfig({
       fileName: (format) => `main.${format === 'umd' ? 'umd.cjs' : 'js'}`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime'],
+      external: [
+        'react',
+        'react-dom',
+        'react/jsx-runtime',
+        'class-variance-authority',
+      ],
       output: {
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
           'react/jsx-runtime': 'jsxRuntime',
+          'class-variance-authority': 'cva',
         },
       },
     },
@@ -46,4 +52,4 @@ export default defineConfig({
       reporter: ['text', 'json', 'html'],
     },
   },
-});
+})

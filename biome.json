@@ -23,12 +23,13 @@
     "formatWithErrors": false,
     "indentStyle": "space",
     "indentWidth": 2,
-    "lineWidth": 100
+    "lineWidth": 100,
+    "include": ["src/**/*.{js,jsx,ts,tsx}"]
   },
   "javascript": {
     "formatter": {
       "quoteStyle": "single",
-      "trailingComma": "es5"
+      "semicolons": "asNeeded"
     }
   }
 }

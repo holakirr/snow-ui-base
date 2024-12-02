@@ -1,4 +1,4 @@
 // Components
-export * from './components';
+export * from './components'
 
 // Add future component exports here

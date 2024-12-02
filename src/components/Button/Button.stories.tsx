@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from './Button';
+import type { Meta, StoryObj } from '@storybook/react'
+import { Button } from './Button'
 
 const meta = {
   title: 'Components/Button',
@@ -8,47 +8,41 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof Button>;
-
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-export const Primary: Story = {
-  args: {
-    children: 'Button',
-    variant: 'primary',
-    size: 'md',
+  argTypes: {
+    variant: {
+      options: ['borderless', 'gray', 'outline', 'filled'],
+      control: { type: 'radio' },
+    },
+    size: {
+      options: ['sm', 'md', 'lg'],
+      control: { type: 'radio' },
+    },
+    disabled: {
+      control: { type: 'boolean' },
+    },
   },
-};
-
-export const Secondary: Story = {
   args: {
-    children: 'Button',
-    variant: 'secondary',
+    variant: 'borderless',
     size: 'md',
+    label: 'Click Me!',
   },
-};
+} satisfies Meta<typeof Button>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const Filled: Story = {
+  args: {
+    variant: 'filled',
+    size: 'md',
+    label: 'Filled',
+  },
+}
 
 export const Outline: Story = {
   args: {
-    children: 'Button',
     variant: 'outline',
     size: 'md',
+    label: 'Outline',
   },
-};
-
-export const Small: Story = {
-  args: {
-    children: 'Small Button',
-    variant: 'primary',
-    size: 'sm',
-  },
-};
-
-export const Large: Story = {
-  args: {
-    children: 'Large Button',
-    variant: 'primary',
-    size: 'lg',
-  },
-};
+}
