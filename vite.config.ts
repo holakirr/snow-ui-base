@@ -22,18 +22,13 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/main.tsx'),
+      entry: resolve(__dirname, 'src/main.ts'),
       name: 'holakirr-snow-ui',
       formats: ['es', 'umd'],
       fileName: (format) => `main.${format === 'umd' ? 'umd.cjs' : 'js'}`,
     },
     rollupOptions: {
-      external: [
-        'react',
-        'react-dom',
-        'react/jsx-runtime',
-        'class-variance-authority',
-      ],
+      external: ['react', 'react-dom', 'react/jsx-runtime', 'class-variance-authority'],
       output: {
         globals: {
           react: 'React',
