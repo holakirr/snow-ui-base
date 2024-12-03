@@ -18,6 +18,9 @@
       }
     }
   },
+  "files": {
+    "ignore": ["node_modules", "dist", "storybook-static", "*.locb", "*.lock", "tsconfig.*.json"]
+  },
   "formatter": {
     "enabled": true,
     "formatWithErrors": false,

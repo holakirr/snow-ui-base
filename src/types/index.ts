@@ -37,7 +37,7 @@ export interface CustomIconProps extends IconProps {
 
 type CustomIconType = (props: CustomIconProps) => JSX.Element
 
-export type Icon = CustomIconType & { displayName: string }
+export type Icon = CustomIconType & { displayName?: string }
 
 export type BaseIcon = (props: IconBaseProps) => JSX.Element
 
