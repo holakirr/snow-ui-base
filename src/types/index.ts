@@ -1,4 +1,4 @@
-import type { ComponentProps, ReactElement } from 'react'
+import type { ComponentProps, FC, ReactElement } from 'react'
 import type { EIconWeight } from '../constants'
 
 export type PickAndPartialOmit<T, K extends keyof T> = Pick<T, K> & Partial<Omit<T, K>>
@@ -33,9 +33,14 @@ export interface CustomIconProps extends IconProps {
    * The alternative text for the icon.
    */
   alt: string
+
+  /**
+   * The size of the icon.
+   */
+  size: IconSize
 }
 
-type CustomIconType = (props: CustomIconProps) => JSX.Element
+type CustomIconType = FC<CustomIconProps>
 
 export type Icon = CustomIconType & { displayName?: string }
 

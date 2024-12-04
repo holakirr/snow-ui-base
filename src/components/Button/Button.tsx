@@ -1,6 +1,7 @@
 import { type VariantProps, cva, cx } from 'class-variance-authority'
-import { ROLES } from '../../constants'
+import { ICON_SIZES, ROLES } from '../../constants'
 import type { Icon, TextSize } from '../../types'
+import { Text } from '../Text'
 
 /**
  * Props for the Button component.
@@ -52,17 +53,17 @@ const buttonStyles = cva(
   },
 )
 
-// const IconSizes = {
-//   sm: ICON_SIZES[16],
-//   md: ICON_SIZES[20],
-//   lg: ICON_SIZES[24],
-// } as const;
+const IconSizes = {
+  sm: ICON_SIZES[16],
+  md: ICON_SIZES[20],
+  lg: ICON_SIZES[24],
+}
 
-const Paddings = {
+const IconButtonPaddings = {
   sm: 'p-1',
   md: 'p-2',
   lg: 'p-4',
-} as const
+}
 
 /**
  * Button component displays a button element.
@@ -83,27 +84,16 @@ const Button = ({
     type="button"
     title={label?.toString() || 'Button title'}
     className={cx(buttonStyles({ variant, size, className }), {
-      [Paddings[size || 'sm']]: LeftIcon && !RightIcon && !label,
+      [IconButtonPaddings[size || 'sm']]: LeftIcon && !RightIcon && !label,
     })}
     role={ROLES.button}
     aria-label={label?.toString() || 'Button aria label'}
     {...props}
   >
-    {LeftIcon && (
-      <LeftIcon
-        // size={IconSizes[size || 'sm']}
-        alt={`Left icon in button ${label}`}
-      />
-    )}
-    {/* {label && <Text className="group-hover:px-1 text-center text-inherit">{label}</Text>} */}
-    {label && (
-      <span className="group-hover:px-1 text-center text-inherit transition-all">{label}</span>
-    )}
+    {LeftIcon && <LeftIcon size={IconSizes[size || 'sm']} alt={`Left icon in button ${label}`} />}
+    {label && <Text className="group-hover:px-1 text-center text-inherit">{label}</Text>}
     {RightIcon && (
-      <RightIcon
-        // size={IconSizes[size || 'sm']}
-        alt={`Right icon in button ${label}`}
-      />
+      <RightIcon size={IconSizes[size || 'sm']} alt={`Right icon in button ${label}`} />
     )}
   </button>
 )
