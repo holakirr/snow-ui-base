@@ -1,5 +1,83 @@
-@import "./styles/font.css";
-@import "./styles/variables.css";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@import "tailwindcss";
+
+@variant dark (@media (prefers-color-scheme: dark) &:not(.[data-mode="light"] *) &:where([data-theme="dark"] *));
+
+@layer base {
+  :root {
+    --black: 0, 0, 0;
+    --white: 255, 255, 255;
+    --brand: 0, 0, 0;
+    --brand-hover: 102, 102, 102;
+    --bg1: 255, 255, 255;
+    --bg2: 249, 249, 250;
+    --bg5: 255, 255, 255;
+  }
+
+  [data-mode="dark"]:root {
+    --black: 255, 255, 255;
+    --white: 0, 0, 0;
+    --brand: 159, 159, 248;
+    --brand-hover: 95, 95, 149;
+    --bg1: 42, 42, 42;
+    --bg2: 255, 255, 255;
+    --bg5: 229, 229, 229;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    &:not([data-mode="light"]):root {
+      --white: 0, 0, 0;
+      --black: 255, 255, 255;
+      --brand: 159, 159, 248;
+      --brand-hover: 95, 95, 149;
+      --bg1: 42, 42, 42;
+      --bg2: 255, 255, 255;
+      --bg5: 229, 229, 229;
+    }
+  }
+}
+
+@theme {
+  --font-normal: Inter, sans-serif;
+
+  --color-black: rgba(var(--black));
+  --color-white: rgba(var(--white));
+  --color-brand: rgba(var(--brand));
+  --color-brand-hover: rgba(var(--brand-hover));
+  --color-purple: rgba(201, 179, 237);
+  --color-indigo: rgba(159, 159, 248);
+  --color-blue: rgba(146, 191, 255);
+  --color-cyan: rgba(174, 199, 237);
+  --color-mint: rgba(150, 226, 214);
+  --color-green: rgba(148, 233, 184);
+  --color-yellow: rgba(255, 219, 86);
+  --color-orange: rgba(255, 181, 91);
+  --color-red: rgba(255, 71, 71);
+  --color-bg1: rgba(var(--bg1));
+  --color-bg2: rgba(var(--bg2));
+  --color-bg3: rgba(230, 241, 253);
+  --color-bg4: rgba(237, 238, 252);
+  --color-bg5: rgba(var(--bg5));
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@utility opacity-4 {
+  opacity: 0.04;
+}

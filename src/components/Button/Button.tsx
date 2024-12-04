@@ -30,7 +30,7 @@ type ButtonProps = React.ComponentProps<'button'> &
   }
 
 const buttonStyles = cva(
-  'group transition-all hover:cursor-pointer disabled:cursor-not-allowed disabled:text-black/10 inline-flex justify-center items-center focus:outline-none focus:ring-4 focus:ring-black/5 active:scale-95',
+  'group transition-all hover:cursor-pointer disabled:cursor-not-allowed disabled:text-black/10 inline-flex justify-center items-center focus:outline-hidden focus:ring-4 focus:ring-black/5 active:scale-95',
   {
     variants: {
       variant: {
@@ -38,7 +38,7 @@ const buttonStyles = cva(
         gray: 'text-black bg-black/5 hover:bg-black/20 disabled:bg-black/5 focus:ring-offset-2',
         outline:
           'text-black bg-transparent border border-black/10 border-solid hover:bg-black/5 disabled:border-black/10',
-        filled: 'text-white bg-brand hover:bg-brandHover disabled:bg-black/4',
+        filled: 'text-white bg-brand hover:bg-brandHover disabled:bg-black/4 dark:bg-white',
       },
       size: {
         sm: 'text-sm py-1 px-2 rounded-lg gap-1',
