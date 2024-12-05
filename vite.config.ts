@@ -1,52 +1,56 @@
-/// <reference types="vitest" />
-
-import { resolve } from 'node:path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
+import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-    dts({
-      insertTypesEntry: true,
-      exclude: [
-        'src/test/**/*',
-        'src/**/*.test.tsx',
-        'src/**/*.test.ts',
-        'src/**/*.stories.tsx',
-        'src/**/*.stories.ts',
-      ],
-    }),
-  ],
-  build: {
-    lib: {
-      entry: resolve(__dirname, 'src/main.ts'),
-      name: 'holakirr-snow-ui',
-      formats: ['es', 'umd'],
-      fileName: (format) => `main.${format === 'umd' ? 'umd.cjs' : 'js'}`,
-    },
-    rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime', 'class-variance-authority'],
-      output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-          'react/jsx-runtime': 'jsxRuntime',
-          'class-variance-authority': 'cva',
-        },
-      },
-    },
-  },
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    coverage: {
-      provider: 'v8',
-      reporter: ['text', 'json', 'html'],
-    },
-  },
-})
+	plugins: [
+		react(),
+		tailwindcss(),
+		dts({
+			insertTypesEntry: true,
+			exclude: [
+				'src/test/**/*',
+				'src/**/*.test.tsx',
+				'src/**/*.test.ts',
+				'src/**/*.stories.tsx',
+				'src/**/*.stories.ts',
+			],
+		}),
+	],
+	build: {
+		lib: {
+			entry: resolve(__dirname, 'src/main.ts'),
+			name: 'holakirr-snow-ui',
+			formats: ['es', 'umd'],
+			fileName: format => `main.${format === 'umd' ? 'umd.cjs' : 'js'}`,
+			cssFileName: 'style',
+		},
+		rollupOptions: {
+			external: [
+				'react',
+				'react-dom',
+				'react/jsx-runtime',
+				'class-variance-authority',
+			],
+			output: {
+				globals: {
+					react: 'React',
+					'react-dom': 'ReactDOM',
+					'react/jsx-runtime': 'jsxRuntime',
+					'class-variance-authority': 'cva',
+				},
+			},
+		},
+	},
+	test: {
+		globals: true,
+		environment: 'jsdom',
+		coverage: {
+			provider: 'v8',
+			reporter: ['text', 'json', 'html'],
+		},
+	},
+} as import('vite').UserConfig)
