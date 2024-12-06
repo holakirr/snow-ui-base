@@ -5,36 +5,36 @@ import type { PolymorphicProps, TextSize } from '../../types'
 const defaultTag = 'span'
 
 const textStyles = cva(['font-normal transition-all'], {
-	variants: {
-		size: {
-			64: 'text-[4rem] leading-[4.875rem]',
-			48: 'text-[3rem] leading-[3.625rem]',
-			32: 'text-[2rem] leading-[2.5rem]',
-			24: 'text-2xl',
-			18: 'text-lg',
-			16: 'text-base',
-			14: 'text-sm',
-			12: 'text-xs',
-			default: 'text-inherit',
-		},
-		semibold: {
-			true: 'font-semibold',
-		},
-		align: {
-			left: 'text-left',
-			center: 'text-center',
-			right: 'text-right',
-		},
-		italic: {
-			true: 'italic',
-		},
-		underline: {
-			true: 'underline',
-		},
-	},
-	defaultVariants: {
-		align: 'left',
-	},
+  variants: {
+    size: {
+      64: 'text-[4rem] leading-[4.875rem]',
+      48: 'text-[3rem] leading-[3.625rem]',
+      32: 'text-[2rem] leading-[2.5rem]',
+      24: 'text-2xl',
+      18: 'text-lg',
+      16: 'text-base',
+      14: 'text-sm',
+      12: 'text-xs',
+      default: 'text-inherit',
+    },
+    semibold: {
+      true: 'font-semibold',
+    },
+    align: {
+      left: 'text-left',
+      center: 'text-center',
+      right: 'text-right',
+    },
+    italic: {
+      true: 'italic',
+    },
+    underline: {
+      true: 'underline',
+    },
+  },
+  defaultVariants: {
+    align: 'left',
+  },
 })
 
 /**
@@ -44,46 +44,44 @@ const textStyles = cva(['font-normal transition-all'], {
  * @example <Text as="h1" size={TEXT_SIZES[24]} semibold align="center" italic underline>Example</Text>
  */
 export type TextProps<C extends ElementType> = PolymorphicProps<C> &
-	VariantProps<typeof textStyles> & {
-		/**
-		 * The element type for the Text component.
-		 */
-		as?: C
+  VariantProps<typeof textStyles> & {
+    /**
+     * The element type for the Text component.
+     */
+    as?: C
 
-		/**
-		 * The size of the text.
-		 */
-		size?: TextSize
-	}
+    /**
+     * The size of the text.
+     */
+    size?: TextSize
+  }
 
 /**
  * Text component displays text with various styles.
  */
 export const Text = forwardRef(
-	<C extends ElementType = 'span'>({
-		as,
-		size,
-		semibold,
-		align,
-		italic,
-		underline,
-		className,
-		children,
-		ref,
-		...props
-	}: TextProps<C>): ReactNode => {
-		const Component = as ?? defaultTag
+  <C extends ElementType = 'span'>({
+    as,
+    size,
+    semibold,
+    align,
+    italic,
+    underline,
+    className,
+    children,
+    ref,
+    ...props
+  }: TextProps<C>): ReactNode => {
+    const Component = as ?? defaultTag
 
-		return (
-			<Component
-				ref={ref}
-				className={cx(
-					textStyles({ size, semibold, align, italic, underline, className })
-				)}
-				{...props}
-			>
-				{children}
-			</Component>
-		)
-	}
+    return (
+      <Component
+        ref={ref}
+        className={cx(textStyles({ size, semibold, align, italic, underline, className }))}
+        {...props}
+      >
+        {children}
+      </Component>
+    )
+  },
 )
