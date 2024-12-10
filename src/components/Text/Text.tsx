@@ -77,7 +77,9 @@ export const Text = forwardRef(
     return (
       <Component
         ref={ref}
-        className={cx(textStyles({ size, semibold, align, italic, underline, className }))}
+        className={cx(
+          textStyles({ size, semibold, align, italic, underline, className }),
+        )}
         {...props}
       >
         {children}

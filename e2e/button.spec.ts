@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test'
 
-const url = 'http://localhost:53741/iframe.html?globals=&args=&id=components-button--'
+const url =
+  'http://localhost:53741/iframe.html?globals=&args=&id=components-button--'
 
 test.describe('Button Component', () => {
   test('should render filled button correctly', async ({ page }) => {

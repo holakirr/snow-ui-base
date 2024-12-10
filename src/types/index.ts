@@ -16,7 +16,8 @@ export type PolymorphicProps<E extends ElementType> = PropsWithChildren<
   ComponentPropsWithRef<E> & PolymorphicAsProp<E>
 >
 
-export type PickAndPartialOmit<T, K extends keyof T> = Pick<T, K> & Partial<Omit<T, K>>
+export type PickAndPartialOmit<T, K extends keyof T> = Pick<T, K> &
+  Partial<Omit<T, K>>
 
 export type StatusNotify = 'success' | 'error'
 

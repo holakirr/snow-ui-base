@@ -29,7 +29,12 @@ export default defineConfig({
       cssFileName: 'style',
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime', 'class-variance-authority'],
+      external: [
+        'react',
+        'react-dom',
+        'react/jsx-runtime',
+        'class-variance-authority',
+      ],
       output: {
         globals: {
           react: 'React',
