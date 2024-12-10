@@ -97,7 +97,7 @@ export const AllSizes = {
 
 export const ButtonWithChildren = {
   args: {
-    children: <a href="https://holakirr.com">Hey, I'm link</a>,
+    children: <span>Text not label</span>,
     label: '',
   },
 }
