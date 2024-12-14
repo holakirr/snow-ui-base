@@ -1,8 +1,7 @@
-export enum EIconWeight {
-  bold = 'bold',
-  duotone = 'duotone',
-  fill = 'fill',
-  light = 'light',
-  regular = 'regular',
-  thin = 'thin',
-}
+export type IconWeight =
+  | 'bold'
+  | 'duotone'
+  | 'fill'
+  | 'light'
+  | 'regular'
+  | 'thin'

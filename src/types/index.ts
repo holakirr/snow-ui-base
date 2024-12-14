@@ -6,7 +6,7 @@ import type {
   PropsWithChildren,
   ReactElement,
 } from 'react'
-import type { EIconWeight } from '../constants'
+import type { IconWeight } from '../constants'
 
 export type PolymorphicAsProp<E extends ElementType> = {
   as?: E
@@ -33,7 +33,7 @@ export type TextSize = 12 | 14 | 16 | 18 | 24 | 32 | 48 | 64
 
 export type IconSize = 16 | 20 | 24 | 28 | 32 | 40 | 48 | 80
 
-export type CustomIconWeights = Map<EIconWeight, ReactElement>
+export type CustomIconWeights = Map<IconWeight, ReactElement>
 
 export type IconProps = ComponentProps<'svg'>
 
