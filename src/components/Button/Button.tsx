@@ -1,5 +1,5 @@
 import { type VariantProps, cva, cx } from 'class-variance-authority'
-import type { ElementType } from 'react'
+import type { ElementType, JSX } from 'react'
 import { ROLES } from '../../constants'
 import type { PolymorphicProps, Size, TextSize } from '../../types'
 import { Text } from '../Text'
