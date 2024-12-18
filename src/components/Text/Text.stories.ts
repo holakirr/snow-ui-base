@@ -11,6 +11,7 @@ const meta = {
   argTypes: {},
   args: {
     children: 'Text',
+    className: 'text-black',
   },
 } satisfies Meta<typeof Text>
 
