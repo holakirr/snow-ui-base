@@ -1,5 +1,6 @@
 import { type VariantProps, cva, cx } from 'class-variance-authority'
 import type { ElementType, ReactNode } from 'react'
+
 import type { PolymorphicProps, TextSize } from '../../types'
 
 const defaultTag = 'span'

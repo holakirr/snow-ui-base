@@ -5,14 +5,14 @@ export const STATUSES_NOTIFY: {
 } = {
   success: 'success',
   error: 'error',
-} as const
+}
 
 export const STATUSES: {
   [K in Status]: K
 } = {
   ...STATUSES_NOTIFY,
   progress: 'progress',
-} as const
+}
 
 export const STATUSES_EXPANDED: {
   [K in StatusExpanded]: K
@@ -21,4 +21,4 @@ export const STATUSES_EXPANDED: {
   warning: 'warning',
   default: 'default',
   info: 'info',
-} as const
+}

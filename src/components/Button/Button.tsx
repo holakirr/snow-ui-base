@@ -1,8 +1,9 @@
 import { type VariantProps, cva, cx } from 'class-variance-authority'
 import type { ElementType, JSX } from 'react'
+
 import { ROLES } from '../../constants'
 import type { PolymorphicProps, Size, TextSize } from '../../types'
-import { Text } from '../Text'
+import { Text } from '../Text/Text'
 
 const defaultTag = 'button'
 
@@ -47,7 +48,7 @@ const buttonStyles = cva(
         gray: 'text-black bg-black/5 hover:bg-black/20 disabled:bg-black/5 focus:ring-offset-2',
         outline:
           'text-black bg-transparent border border-black/10 border-solid hover:bg-black/5 disabled:border-black/10',
-        filled: 'text-white bg-brand hover:bg-brandHover disabled:bg-black/4',
+        filled: 'text-white bg-brand hover:bg-brand-hover disabled:bg-black/4',
       },
       size: {
         sm: 'text-sm py-1 px-2 rounded-lg gap-1',
