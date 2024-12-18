@@ -1,13 +1,7 @@
 import { type VariantProps, cva, cx } from 'class-variance-authority'
-import { type ElementType, forwardRef } from 'react'
-import { ICON_SIZES, ROLES } from '../../constants'
-import type {
-  Icon,
-  IconSize,
-  PolymorphicProps,
-  Size,
-  TextSize,
-} from '../../types'
+import type { ElementType } from 'react'
+import { ROLES } from '../../constants'
+import type { PolymorphicProps, Size, TextSize } from '../../types'
 import { Text } from '../Text'
 
 const defaultTag = 'button'
@@ -31,12 +25,12 @@ export type ButtonProps<C extends ElementType = typeof defaultTag> =
       /**
        * The icon component to be displayed on the right side of the button.
        */
-      rightIcon?: Icon
+      leftContent?: JSX.Element
 
       /**
        * The icon component to be displayed on the left side of the button.
        */
-      leftIcon?: Icon
+      rightContent?: JSX.Element
 
       /**
        * The size of the text displayed on the button.
@@ -69,12 +63,6 @@ const buttonStyles = cva(
   },
 )
 
-const IconSizes: { [K in Size]: IconSize } = {
-  sm: ICON_SIZES[16],
-  md: ICON_SIZES[20],
-  lg: ICON_SIZES[24],
-}
-
 const IconButtonPaddings: { [K in Size]: string } = {
   sm: 'p-1',
   md: 'p-2',
@@ -84,59 +72,48 @@ const IconButtonPaddings: { [K in Size]: string } = {
 /**
  * Button component displays a button element.
  */
-const Button = forwardRef(
-  <C extends ElementType = typeof defaultTag>({
-    as,
-    className,
-    label,
-    leftIcon: LeftIcon,
-    rightIcon: RightIcon,
-    size = 'md',
-    textSize,
-    variant = 'borderless',
-    children,
-    ref,
-    ...props
-  }: ButtonProps<C>): JSX.Element => {
-    const Component = as ?? defaultTag
-    return (
-      <Component
-        ref={ref}
-        type="button"
-        title={label?.toString() || 'Button title'}
-        className={cx(
-          buttonStyles({ variant, size, className }),
-          LeftIcon &&
-            !RightIcon &&
-            !label &&
-            IconButtonPaddings[size as keyof typeof IconButtonPaddings],
-        )}
-        role={ROLES.button}
-        aria-label={label?.toString() || 'Button aria label'}
-        {...props}
-      >
-        {LeftIcon && (
-          <LeftIcon
-            size={IconSizes[size as keyof typeof IconSizes]}
-            alt={`Left icon in button ${label}`}
-          />
-        )}
-        {label && (
-          <Text className="group-hover:px-1 text-center text-inherit">
-            {label}
-          </Text>
-        )}
-        {children}
-        {RightIcon && (
-          <RightIcon
-            size={IconSizes[size as keyof typeof IconSizes]}
-            alt={`Right icon in button ${label}`}
-          />
-        )}
-      </Component>
-    )
-  },
-)
+const Button = <C extends ElementType = typeof defaultTag>({
+  as,
+  className,
+  label,
+  leftContent: LeftIcon,
+  rightContent: RightIcon,
+  size = 'md',
+  textSize,
+  variant = 'borderless',
+  children,
+  ref,
+  ...props
+}: ButtonProps<C>): JSX.Element => {
+  const Component = as ?? defaultTag
+
+  return (
+    <Component
+      ref={ref}
+      type="button"
+      title={label?.toString() || 'Button title'}
+      className={cx(
+        buttonStyles({ variant, size, className }),
+        LeftIcon &&
+          !RightIcon &&
+          !label &&
+          IconButtonPaddings[size as keyof typeof IconButtonPaddings],
+      )}
+      role={ROLES.button}
+      aria-label={label?.toString() || 'Button aria label'}
+      {...props}
+    >
+      {LeftIcon}
+      {label && (
+        <Text className="group-hover:px-1 text-center text-inherit">
+          {label}
+        </Text>
+      )}
+      {children}
+      {RightIcon}
+    </Component>
+  )
+}
 
 Button.displayName = 'Button'
 

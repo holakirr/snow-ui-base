@@ -30,13 +30,13 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Borderless = {
+export const Borderless: Story = {
   args: {
     label: 'Borderless',
   },
 }
 
-export const Gray = {
+export const Gray: Story = {
   args: {
     label: 'Gray',
     variant: 'gray',
@@ -57,7 +57,7 @@ export const Outline: Story = {
   },
 }
 
-export const AllVariants = {
+export const AllVariants: Story = {
   render: () => (
     <div className="flex flex-col items-center gap-1">
       {Object.values(BUTTON_VARIANTS).map((variant) => (
@@ -67,25 +67,25 @@ export const AllVariants = {
   ),
 }
 
-export const SmallButton = {
+export const SmallButton: Story = {
   args: {
     size: SIZES.sm,
   },
 }
 
-export const DefaultSizeButton = {
+export const DefaultSizeButton: Story = {
   args: {
     size: SIZES.md,
   },
 }
 
-export const LargeButton = {
+export const LargeButton: Story = {
   args: {
     size: SIZES.lg,
   },
 }
 
-export const AllSizes = {
+export const AllSizes: Story = {
   render: () => (
     <div className="flex flex-col items-center gap-1">
       {Object.values(SIZES).map((size) => (
@@ -95,14 +95,14 @@ export const AllSizes = {
   ),
 }
 
-export const ButtonWithChildren = {
+export const ButtonWithChildren: Story = {
   args: {
     children: <span>Text not label</span>,
     label: '',
   },
 }
 
-export const ButtonAsLink = {
+export const ButtonAsLink: Story = {
   args: {
     as: 'a',
     href: 'https://holakirr.com',

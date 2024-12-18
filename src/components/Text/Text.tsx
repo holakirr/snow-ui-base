@@ -1,5 +1,5 @@
 import { type VariantProps, cva, cx } from 'class-variance-authority'
-import { type ElementType, type ReactNode, forwardRef } from 'react'
+import type { ElementType, ReactNode } from 'react'
 import type { PolymorphicProps, TextSize } from '../../types'
 
 const defaultTag = 'span'
@@ -43,47 +43,44 @@ const textStyles = cva(['font-normal transition-all'], {
  * @template C - The element type for the Text component.
  * @example <Text as="h1" size={TEXT_SIZES[24]} semibold align="center" italic underline>Example</Text>
  */
-export type TextProps<C extends ElementType> = PolymorphicProps<C> &
-  VariantProps<typeof textStyles> & {
-    /**
-     * The element type for the Text component.
-     */
-    as?: C
-
-    /**
-     * The size of the text.
-     */
-    size?: TextSize
-  }
+export type TextProps<C extends ElementType = typeof defaultTag> =
+  PolymorphicProps<C> &
+    VariantProps<typeof textStyles> & {
+      /**
+       * The size of the text.
+       */
+      size?: TextSize
+    }
 
 /**
  * Text component displays text with various styles.
  */
-export const Text = forwardRef(
-  <C extends ElementType = 'span'>({
-    as,
-    size,
-    semibold,
-    align,
-    italic,
-    underline,
-    className,
-    children,
-    ref,
-    ...props
-  }: TextProps<C>): ReactNode => {
-    const Component = as ?? defaultTag
+function Text<C extends ElementType = typeof defaultTag>({
+  as,
+  size,
+  semibold,
+  align,
+  italic,
+  underline,
+  className,
+  children,
+  ref,
+  ...props
+}: TextProps<C>): ReactNode {
+  const Component = as ?? defaultTag
 
-    return (
-      <Component
-        ref={ref}
-        className={cx(
-          textStyles({ size, semibold, align, italic, underline, className }),
-        )}
-        {...props}
-      >
-        {children}
-      </Component>
-    )
-  },
-)
+  return (
+    <Component
+      ref={ref}
+      className={cx(
+        textStyles({ size, semibold, align, italic, underline, className }),
+      )}
+      {...props}
+    >
+      {children}
+    </Component>
+  )
+}
+
+Text.displayName = 'Text'
+export { Text }

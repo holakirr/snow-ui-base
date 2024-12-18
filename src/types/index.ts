@@ -1,19 +1,15 @@
 import type {
-  ComponentProps,
-  ComponentPropsWithRef,
+  ComponentPropsWithoutRef,
   ElementType,
-  FC,
   PropsWithChildren,
-  ReactElement,
 } from 'react'
-import type { IconWeight } from '../constants'
 
 export type PolymorphicAsProp<E extends ElementType> = {
   as?: E
 }
 
 export type PolymorphicProps<E extends ElementType> = PropsWithChildren<
-  ComponentPropsWithRef<E> & PolymorphicAsProp<E>
+  ComponentPropsWithoutRef<E> & PolymorphicAsProp<E>
 >
 
 export type PickAndPartialOmit<T, K extends keyof T> = Pick<T, K> &
@@ -31,37 +27,6 @@ export type Size = SimpleSize | 'md'
 
 export type TextSize = 12 | 14 | 16 | 18 | 24 | 32 | 48 | 64
 
-export type IconSize = 16 | 20 | 24 | 28 | 32 | 40 | 48 | 80
-
-export type CustomIconWeights = Map<IconWeight, ReactElement>
-
-export type IconProps = ComponentProps<'svg'>
-
-export interface IconBaseProps extends IconProps {
-  weights: CustomIconWeights
-}
-
-/**
- * Represents the properties for a custom icon.
- */
-export interface CustomIconProps extends IconProps {
-  /**
-   * The alternative text for the icon.
-   */
-  alt: string
-
-  /**
-   * The size of the icon.
-   */
-  size: IconSize
-}
-
-type CustomIconType = FC<CustomIconProps>
-
-export type Icon = CustomIconType & { displayName?: string }
-
-export type BaseIcon = (props: IconBaseProps) => JSX.Element
-
 export type ButtonVariant = 'borderless' | 'gray' | 'outline' | 'filled'
 
 export type SeparatorDirection = 'horizontal' | 'vertical'
@@ -78,7 +43,7 @@ export type NavigationItemType = {
   label: string
   id: string
   items?: NavigationItemType[]
-  icon?: Icon
+  icon?: JSX.Element
 }
 
 export type ModifiedNavigationItemType = NavigationItemType & {
