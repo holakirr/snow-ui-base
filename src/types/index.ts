@@ -1,6 +1,7 @@
 import type {
   ComponentPropsWithoutRef,
   ElementType,
+  JSX,
   PropsWithChildren,
 } from 'react'
 
