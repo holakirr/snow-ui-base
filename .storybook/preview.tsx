@@ -1,6 +1,8 @@
 import { withThemeByDataAttribute } from '@storybook/addon-themes'
 import type { Preview } from '@storybook/react'
+import React from 'react'
 import './index.css'
+import { StoryWrapper } from './StoryWrapper'
 
 const preview: Preview = {
   parameters: {
@@ -24,9 +26,14 @@ const preview: Preview = {
         light: 'light',
         dark: 'dark',
       },
-      attributeName: 'data-mode',
+      attributeName: 'data-theme',
       defaultTheme: 'light',
     }),
+    (Story) => (
+      <StoryWrapper>
+        <Story />
+      </StoryWrapper>
+    ),
   ],
 
   tags: ['autodocs'],

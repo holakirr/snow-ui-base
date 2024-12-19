@@ -20,56 +20,32 @@ Take a look at my [CV](https://holakirr.com) =)
 
 ## Getting Started
 
-### Prerequisites
-
-Make sure you have [Bun](https://bun.sh) installed:
-
-```bash
-curl -fsSL https://bun.sh/install | bash
-```
-
 ### Installation
 
+To get started, install Holakirrr Snow UI and via package manager of your choice:
+
 ```bash
-bun install
+bun add holakirr-snow-ui
 ```
 
-### Development
+### Basic example
 
-```bash
-# Start development server
-bun run dev
+Buttons are build using the Button component:
 
-# Start Storybook
-bun run storybook
+```jsx
+import { Button } from 'holakirr-snow-ui';
 
-# Run unit tests
-bun run test
-bun run test:ui     # with UI
-bun run test:coverage
-
-# Run E2E tests
-bun run e2e
-bun run e2e:ui      # with UI
-
-# Code quality
-bun run lint
-bun run format
-```
-
-### Building
-
-```bash
-# Build the library
-bun run build
-
-# Build Storybook
-bun run build-storybook
+function App() {
+  return (
+    <Button variant="filled" size="md">
+      Click me
+    </Button>
+  );
 ```
 
 ## Component Documentation
 
-Components are documented in Storybook with examples and props documentation. Run `bun run storybook` to view the documentation.
+Components are documented in Storybook with examples and props documentation. Visit the [Storybook](https://snow-ui.holakirr.com) to explore the components and their usage.
 
 ## Testing
 
@@ -84,14 +60,14 @@ bun add holakirr-snow-ui
 ```
 
 ```jsx
-import { Button } from 'holakirr-snow-ui';
+import { Button } from 'holakirr-snow-ui'
 
 function App() {
-  return (
-    <Button variant="primary" size="md">
-      Click me
-    </Button>
-  );
+	return (
+		<Button variant="primary" size="md">
+			Click me
+		</Button>
+	)
 }
 ```
 

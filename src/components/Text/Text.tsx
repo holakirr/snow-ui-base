@@ -16,7 +16,7 @@ const textStyles = cva(['font-normal transition-all'], {
       16: 'text-base',
       14: 'text-sm',
       12: 'text-xs',
-      default: 'text-inherit',
+      default: 'text-base',
     },
     semibold: {
       true: 'font-semibold',

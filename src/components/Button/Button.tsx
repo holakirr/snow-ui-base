@@ -1,5 +1,6 @@
-import { type VariantProps, cva, cx } from 'class-variance-authority'
+import { type VariantProps, cva } from 'class-variance-authority'
 import type { ElementType, JSX } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 import { ROLES } from '../../constants'
 import type { PolymorphicProps, Size, TextSize } from '../../types'
@@ -40,20 +41,21 @@ export type ButtonProps<C extends ElementType = typeof defaultTag> =
     }
 
 const buttonStyles = cva(
-  'group transition-all hover:cursor-pointer disabled:cursor-not-allowed disabled:text-black/10 inline-flex justify-center items-center focus:outline-hidden focus:ring-4 focus:ring-black/5 active:scale-95',
+  'group transition-all hover:cursor-pointer disabled:cursor-not-allowed text-black disabled:text-black/10 inline-flex justify-center items-center focus:outline-hidden focus:ring-4 focus:ring-black/5 active:scale-95',
   {
     variants: {
       variant: {
-        borderless: 'text-black bg-transparent font-normal hover:bg-black/5',
-        gray: 'text-black bg-black/5 hover:bg-black/20 disabled:bg-black/5 focus:ring-offset-2',
+        borderless: 'bg-transparent font-normal hover:bg-black/5',
+        gray: 'bg-black/5 hover:bg-black/20 disabled:bg-black/5 focus:ring-offset-2',
         outline:
-          'text-black bg-transparent border border-black/10 border-solid hover:bg-black/5 disabled:border-black/10',
-        filled: 'text-white bg-brand hover:bg-brand-hover disabled:bg-black/4',
+          'bg-transparent border border-black/10 border-solid hover:bg-black/5 disabled:border-black/10',
+        filled:
+          'text-white bg-brand hover:bg-brand-hover disabled:bg-black/4 dark:text-black',
       },
       size: {
         sm: 'text-sm py-1 px-2 rounded-lg gap-1',
         md: 'text-base py-2 px-4 rounded-xl gap-2',
-        lg: 'text-lg py-4 px-6 rounded-2xl gap-2',
+        lg: 'text-lg py-3 px-6 rounded-2xl gap-2',
       },
     },
     defaultVariants: {
@@ -76,8 +78,8 @@ const Button = <C extends ElementType = typeof defaultTag>({
   as,
   className,
   label,
-  leftContent: LeftIcon,
-  rightContent: RightIcon,
+  leftContent,
+  rightContent,
   size = 'md',
   textSize,
   variant = 'borderless',
@@ -92,25 +94,26 @@ const Button = <C extends ElementType = typeof defaultTag>({
       ref={ref}
       type="button"
       title={label?.toString() || 'Button title'}
-      className={cx(
+      className={twMerge(
         buttonStyles({ variant, size, className }),
-        LeftIcon &&
-          !RightIcon &&
-          !label &&
-          IconButtonPaddings[size as keyof typeof IconButtonPaddings],
+        leftContent &&
+          !rightContent &&
+          !label && [
+            IconButtonPaddings[size as keyof typeof IconButtonPaddings],
+          ],
       )}
       role={ROLES.button}
       aria-label={label?.toString() || 'Button aria label'}
       {...props}
     >
-      {LeftIcon}
+      {leftContent}
       {label && (
         <Text className="group-hover:px-1 text-center text-inherit">
           {label}
         </Text>
       )}
       {children}
-      {RightIcon}
+      {rightContent}
     </Component>
   )
 }

@@ -1,7 +1,7 @@
 {
   "name": "holakirr-snow-ui",
   "private": false,
-  "version": "0.12.9",
+  "version": "0.12.10",
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
@@ -61,7 +61,8 @@
     "tailwindcss": "^4.0.0-beta.8"
   },
   "dependencies": {
-    "class-variance-authority": "^0.7.1"
+    "class-variance-authority": "^0.7.1",
+    "tailwind-merge": "^2.5.5"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
@@ -81,7 +82,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@types/node": "^22.10.2",
-    "@types/react": "^19.0.1",
+    "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
     "@vitejs/plugin-react": "^4.3.4",
     "@vitest/coverage-v8": "^2.1.8",
@@ -94,7 +95,7 @@
     "tailwindcss": "^4.0.0-beta.8",
     "typescript": "^5.7.2",
     "vite": "^6.0.3",
-    "vite-plugin-dts": "^4.3.0",
+    "vite-plugin-dts": "^4.4.0",
     "vitest": "^2.1.8"
   },
   "engines": {

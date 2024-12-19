@@ -1,6 +1,6 @@
-import { resolve } from 'node:path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
+import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 
@@ -34,6 +34,7 @@ export default defineConfig({
         'react-dom',
         'react/jsx-runtime',
         'class-variance-authority',
+        'tailwind-merge',
       ],
       output: {
         globals: {
@@ -41,6 +42,7 @@ export default defineConfig({
           'react-dom': 'ReactDOM',
           'react/jsx-runtime': 'jsxRuntime',
           'class-variance-authority': 'cva',
+          'tailwind-merge': 'twMerge',
         },
       },
     },
