@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { BUTTON_VARIANTS, SIZES } from '../../constants'
+import { BUTTON_VARIANTS, ROLES, SIZES } from '../../constants'
 import { Text } from '../Text/Text'
 import { Button } from './Button'
 
@@ -11,6 +11,7 @@ const leftIcon = (
     fill="currentColor"
     className="bi bi-arrow-left"
     viewBox="0 0 16 16"
+    role={ROLES.img}
   >
     <title>Left Icon</title>
     <path
@@ -28,6 +29,7 @@ const rightIcon = (
     fill="currentColor"
     className="bi bi-arrow-right"
     viewBox="0 0 16 16"
+    role={ROLES.img}
   >
     <title>Right Icon</title>
     <path
@@ -46,11 +48,11 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     variant: {
-      options: ['borderless', 'gray', 'outline', 'filled'],
+      options: Object.values(BUTTON_VARIANTS),
       control: { type: 'radio' },
     },
     size: {
-      options: ['sm', 'md', 'lg'],
+      options: Object.values(SIZES),
       control: { type: 'radio' },
     },
     disabled: {
@@ -59,7 +61,7 @@ const meta = {
   },
   args: {
     label: Button.displayName,
-    // I use filled to see better in snapshots
+    // I use filled to see better in snapshots but the default is borderless
     variant: 'filled',
   },
 } satisfies Meta<typeof Button>
@@ -143,7 +145,7 @@ export const AllSizes: Story = {
 
 export const WithChildren: Story = {
   args: {
-    children: <span>with-children</span>,
+    children: <p>with-children</p>,
   },
 }
 
